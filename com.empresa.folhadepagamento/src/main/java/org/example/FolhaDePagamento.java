@@ -1,5 +1,6 @@
+package org.example;
+
 public class FolhaDePagamento {
-    // ...
 
     public static void calcularFolha(Funcionario funcionario) {
         double salarioBruto = funcionario.getSalarioBruto();
@@ -31,11 +32,27 @@ public class FolhaDePagamento {
         System.out.println();
     }
 
+    private static double calcularINSS(double salarioBruto) {
+        // Simulação simples de cálculo de INSS
+        if (salarioBruto <= 1500) {
+            return salarioBruto * 0.08; // 8% de INSS para salário até 1500
+        } else {
+            return salarioBruto * 0.1; // 10% de INSS para salário acima de 1500
+        }
+    }
+
+    private static double calcularIRPF(double baseIRPF) {
+        // Simulação simples de cálculo de IRPF
+        if (baseIRPF <= 3000) {
+            return 0; // Isento de IRPF para base de até 3000
+        } else {
+            return baseIRPF * 0.15; // 15% de IRPF para base acima de 3000
+        }
+    }
+
     private static double calcularDescontoVT(double salarioBase) {
         // Desconto de VT limitado a até 6% do salário base conforme CLT
         double limiteDesconto = salarioBase * 0.06;
         return Math.min(limiteDesconto, salarioBase);
     }
-
-    // ...
 }
