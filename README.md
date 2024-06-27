@@ -1,55 +1,32 @@
 # Sistema de Folha de Pagamento em Java
 
-Este projeto em Java demonstra um sistema simples de folha de pagamento que calcula o salário líquido de funcionários com base no salário bruto, descontos de INSS e IRPF.
+Este projeto em Java implementa um sistema simples de folha de pagamento que calcula o salário líquido de funcionários com base no salário bruto, descontos de INSS, IRPF e benefícios como Vale Transporte (VT).
 
 ## Estrutura do Projeto
 
 O projeto é estruturado da seguinte maneira:
 
-- **Funcionario.java**: Define a classe `Funcionario` que representa os dados de um funcionário.
-- **FolhaDePagamento.java**: Contém a classe `FolhaDePagamento` que realiza os cálculos de folha de pagamento.
-- **Main.java**: Classe de execução que instancia funcionários e calcula a folha de pagamento para demonstração.
+- **Main.java**: Classe principal que demonstra a execução do sistema.
+- **Funcionario.java**: Classe que define os dados de um funcionário.
+- **FolhaDePagamento.java**: Classe que realiza os cálculos de folha de pagamento.
 
 ## Funcionamento
 
-### Funcionario.java
-
-A classe `Funcionario` possui os seguintes atributos e métodos:
-
-- **Atributos**:
-  - `nome`: Nome do funcionário.
-  - `salarioBruto`: Salário bruto do funcionário.
-
-- **Métodos**:
-  - `getNome()`: Retorna o nome do funcionário.
-  - `getSalarioBruto()`: Retorna o salário bruto do funcionário.
-
-### FolhaDePagamento.java
-
-A classe `FolhaDePagamento` realiza os cálculos de folha de pagamento:
-
-- **Métodos Estáticos**:
-  - `calcularFolha(Funcionario funcionario)`: Calcula o desconto de INSS, IRPF e o salário líquido com base no salário bruto do funcionário passado como parâmetro.
-
-- **Cálculo de Descontos**:
-  - INSS: Calculado de acordo com faixas de salário bruto.
-  - IRPF: Calculado com base na base de cálculo após descontar o INSS.
-
 ### Main.java
 
-A classe `Main` demonstra a execução do sistema:
+A classe `Main` é responsável por inicializar o sistema e calcular a folha de pagamento de dois funcionários:
 
-- Instancia dois funcionários com diferentes salários brutos.
-- Chama o método `calcularFolha()` da classe `FolhaDePagamento` para cada funcionário.
+```java
+package org.example;
 
-## Como Executar
+public class Main {
+    public static void main(String[] args) {
+        Funcionario funcionario1 = new Funcionario("João", 1412);
+        Funcionario funcionario2 = new Funcionario("Maria", 5000);
 
-Para executar o projeto:
+        System.out.println("Calculando folha de pagamento...\n");
 
-1. Clone este repositório.
-2. Abra o projeto em sua IDE Java preferida.
-3. Execute o arquivo `Main.java`.
-
-## Contribuições
-
-Contribuições são bem-vindas via pull requests. Para grandes mudanças, abra um issue primeiro para discutir o que você gostaria de mudar.
+        FolhaDePagamento.calcularFolha(funcionario1);
+        FolhaDePagamento.calcularFolha(funcionario2);
+    }
+}
